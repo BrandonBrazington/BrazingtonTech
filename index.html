@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Temperature Live Data</title>
+    <link href="styles/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="scripts/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="scripts/Chart.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="scripts/signalr.js"></script>
+    <script src="scripts/index.js"></script>
+  </head>
+  <body>
+    <div class="col-md-6 col-xs-12">
+        <canvas id="outdoorChart" width="400" height="150"></canvas>
+    </div>
+    <div class="col-md-6 col-xs-12">
+        <canvas id="indoorChart" width="400" height="150"></canvas>
+    </div>
+    <div id="mainTempDiv">
+        <h3>Temperature RAW Data</h3>
+            <p>Allow up to one minute for updated data to appear here</p>
+        <div id="temperatureData"></div>
+        </>
+    </div>
+  </body>
+</html>
