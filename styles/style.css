@@ -1,9 +1,36 @@
+* {
+  /*outline: 1px solid red !important;*/
+  font-family: Calibri;
+}
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
   margin: 0;
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
+}
+
+.temperature-card {
+  color: beige;
+  background-color: deepskyblue;
+  border-radius: 25px;
+  /* padding: 15px; */
+  /* margin: 25px; */
+  min-width: 300px;
+  /* max-width: 1000px; */
+  min-height: 200px;
+  /* max-height: 1000px; */
+  font: bold 25px Calibri;
+  text-align: center;
+}
+
+.title {
+  color: darkred;
+  background-color: limegreen;
+  border-radius: 30px;
+  /* padding: 5px; */
+  /* max-width: 1100px; */
+  text-align: center;
 }

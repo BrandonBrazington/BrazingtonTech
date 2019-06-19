@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Temperature Live Data</title>
-    <link href="styles/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="styles/style.css" rel="stylesheet" />
     <script src="scripts/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="scripts/Chart.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -14,17 +14,37 @@
     <script src="scripts/index.js"></script>
   </head>
   <body>
+    <div class="container-fluid">
+      <div class="row">
+      <h1 class="title col-md-12">Temperature Live Data</h1>
+    <div class="temperature-card-holder"> 
+      <div id="outdoor-temperature-card" class="temperature-card col-md-5 col-xs-12">
+      <h1 class="temperature-title">Outdoor Temperature:</h1>
+      <p id="outdoor-temperature-data" class="temperature-data">70&deg;</p>
+    </div>
+  </div>
+  <div class="temperature-card-holder">
+    <div id="indoor-temperature-humidity-card" class="temperature-card col-md-5 col-xs-12 col-md-offset-2">
+        <h1 class="temperature-title">Indoor Temperature:</h1>
+        <p id="indoor-temperature-data" class="temperature-data">70&deg;</p>  
+        <h1 class="humidity-title">Indoor Humidity:</h1>
+        <p id="indoor-humidity-data" class="temperature-data">40%</p>
+    </div></div>
+  </div><div class="row">
     <div class="col-md-6 col-xs-12">
         <canvas id="outdoorChart" width="400" height="150"></canvas>
     </div>
     <div class="col-md-6 col-xs-12">
         <canvas id="indoorChart" width="400" height="150"></canvas>
     </div>
+  </div><div class="row">
     <div id="mainTempDiv">
         <h3>Temperature RAW Data</h3>
             <p>Allow up to one minute for updated data to appear here</p>
         <div id="temperatureData"></div>
         </>
     </div>
+  </div>
+</div>
   </body>
 </html>
