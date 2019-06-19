@@ -1,9 +1,76 @@
+* {
+  /*outline: 1px solid red !important;*/
+  font-family: Calibri;
+}
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
   margin: 0;
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
+}
+
+.temperature-card, .humidity-card  {
+  color: beige;
+  background-color: deepskyblue;
+  border-radius: 25px;
+  /* padding: 15px; */
+  /* margin: 25px; */
+  /* min-width: 300px; */
+  /* max-width: 1000px; */
+  /* min-height: 200px; */
+  /* max-height: 1000px; */
+  font: bold 25px Calibri;
+  text-align: center;
+}
+
+.title {
+  color: darkred;
+  background-color: limegreen;
+  border-radius: 30px;
+  /* padding: 5px; */
+  /* max-width: 1100px; */
+  text-align: center;
+  grid-area: header;
+}
+
+.css-grid-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr 1fr 1fr;
+  grid-gap: 15px;
+  grid-template-areas:
+    "header"
+    "outTemp"
+    "inHumidity"
+    "inTemp";
+}
+
+@media (min-width: 1000px) {
+  .css-grid-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "header header header"
+      "outTemp inHumidity inTemp";
+  }
+}
+
+.temperature-data, .humidity-data {
+  font-size: 3em; 
+}
+
+#outdoor-temperature-card {
+  grid-area: outTemp;
+}
+
+#indoor-humidity-card {
+  grid-area: inHumidity;
+}
+
+#indoor-temperature-card {
+  grid-area: inTemp;
 }
