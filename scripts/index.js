@@ -176,10 +176,24 @@ $(document).ready(function () {
     }
   });
 
-  connection.start().then(function () {
-    console.log('Successfully connected to SignalR Service');
-    $('#temperatureData').prepend('<div class="webSockets-message">SignalR Successfully Connected</div>');
-  });
+  async function start() {
+    try {
+      await connection.start();
+      console.log('Successfully connected to SignalR Service');
+      $('#temperatureData').prepend('<div class="signalR-message">SignalR Successfully Connected</div>');
+    } catch (err) {
+      console.log('SignalR Error: ' + err);
+      $('#temperatureData').prepend('<div class="signalR-message">SignalR Error: See developer console for more details');
+        setTimeout(() => start(), 5000);
+    }
+};
+
+connection.onclose(async () => {
+  $('#temperatureData').prepend('<div class="signalR-message">SignalR Disconnected: Attempting to reconnect</div>');
+    await start();
+});
+
+  start();
 
   // var onError = function (error) {
   //     console.log('WebSocket Error: ' + error);
