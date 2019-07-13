@@ -44,11 +44,11 @@ a {
   grid-gap: 15px;
   grid-template-areas:
     "header"
-    "outTemp"
     "bedHumidity"
     "bedTemp"
     "livHumidity"
-    "livTemp";
+    "livTemp"
+    "outTemp";
 }
 
 @media (min-width: 1000px) {
@@ -57,7 +57,7 @@ a {
     grid-template-rows: auto 1fr;
     grid-template-areas:
       "header header header header header"
-      "outTemp bedHumidity bedTemp livHumidity livTemp";
+      "bedHumidity bedTemp livHumidity livTemp outTemp";
   }
 }
 
