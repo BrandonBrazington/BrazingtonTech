@@ -25,28 +25,37 @@
       <p id="outdoor-temperature-data" class="temperature-data">No Data</p>
 
     </div>
-    <div id="indoor-humidity-card" class="humidity-card">
-      <h1 class="humidity-title">Indoor Humidity:</h1>
-      <p id="indoor-humidity-data" class="humidity-data">No Data</p>
+    <div id="bedroom-humidity-card" class="humidity-card">
+      <h1 class="humidity-title">Bedroom Humidity:</h1>
+      <p id="bedroom-humidity-data" class="humidity-data">No Data</p>
     </div>
-    <div id="indoor-temperature-humidity-card" class="temperature-card">
-      <h1 class="temperature-title">Indoor Temperature:</h1>
-      <p id="indoor-temperature-data" class="temperature-data">No Data</p>
+    <div id="bedroom-temperature-humidity-card" class="temperature-card">
+      <h1 class="temperature-title">Bedroom Temperature:</h1>
+      <p id="bedroom-temperature-data" class="temperature-data">No Data</p>
+    </div>
+    <div id="living-room-humidity-card" class="humidity-card">
+      <h1 class="humidity-title">Living Room Humidity:</h1>
+      <p id="living-room-humidity-data" class="humidity-data">No Data</p>
+    </div>
+    <div id="living-room-temperature-humidity-card" class="temperature-card">
+      <h1 class="temperature-title">Living Room Temperature:</h1>
+      <p id="living-room-temperature-data" class="temperature-data">No Data</p>
     </div>
   </div>
 
 
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-6 col-xs-12">
-        <canvas id="outdoorChart" width="400" height="150"></canvas>
+    <div class="col-md-6 col-xs-12">
+        <canvas id="outdoor-chart" width="400" height="150"></canvas>
       </div>
       <div class="col-md-6 col-xs-12">
-        <canvas id="indoorChart" width="400" height="150"></canvas>
+        <canvas id="bedroom-chart" width="400" height="150"></canvas>
+      </div>
+      <div class="col-md-6 col-xs-12">
+        <canvas id="living-room-chart" width="400" height="150"></canvas>
       </div>
     </div>
-    <div class="row">
-      <div id="mainTempDiv">
+    <div class="col-md-6 col-xs-12" id="mainTempDiv">
         <h3>Temperature RAW Data</h3>
         <p>Allow up to one minute for updated data to appear here</p>
         <div id="temperatureData"></div>

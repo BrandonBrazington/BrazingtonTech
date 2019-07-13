@@ -40,22 +40,24 @@ a {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr 1fr 1fr;
+  grid-template-rows: auto 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 15px;
   grid-template-areas:
     "header"
     "outTemp"
-    "inHumidity"
-    "inTemp";
+    "bedHumidity"
+    "bedTemp"
+    "livHumidity"
+    "livTemp";
 }
 
 @media (min-width: 1000px) {
   .css-grid-container {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas:
-      "header header header"
-      "outTemp inHumidity inTemp";
+      "header header header header header"
+      "outTemp bedHumidity bedTemp livHumidity livTemp";
   }
 }
 
@@ -67,10 +69,18 @@ a {
   grid-area: outTemp;
 }
 
-#indoor-humidity-card {
-  grid-area: inHumidity;
+#bedroom-humidity-card {
+  grid-area: bedHumidity;
 }
 
-#indoor-temperature-card {
-  grid-area: inTemp;
+#bedroom-temperature-card {
+  grid-area: bedTemp;
+}
+
+#living-room-humidity-card {
+  grid-area: livHumidity;
+}
+
+#living-room-temperature-card {
+  grid-area: livTemp;
 }
