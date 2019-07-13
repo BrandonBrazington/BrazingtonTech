@@ -12,7 +12,7 @@ a {
   color: #00b7ff;
 }
 
-.temperature-card, .humidity-card  {
+.temperature-card, .humidity-card, .signalR-status-div {
   color: beige;
   background-color: deepskyblue;
   border-radius: 25px;
@@ -53,16 +53,32 @@ a {
 
 @media (min-width: 1000px) {
   .css-grid-container {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas:
-      "header header header header header"
-      "bedHumidity bedTemp livHumidity livTemp outTemp";
+      "header header header header header header"
+      "status bedHumidity bedTemp livHumidity livTemp outTemp";
   }
 }
 
 .temperature-data, .humidity-data {
   font-size: 3em; 
+}
+
+#signalR-status-data {
+  font-size: 2em;
+}
+
+.signalR-status-div {
+  background-color: darkred;
+}
+
+.connected {
+  background-color: green;
+}
+
+.signalR-status-div {
+  grid-area: status
 }
 
 #outdoor-temperature-card {

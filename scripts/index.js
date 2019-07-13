@@ -171,14 +171,14 @@ $(document).ready(function () {
     options: bedroomOption
   });
 
-//Get the context of the canvas element for the living room chart
-var livingRoomCtx = document.getElementById("living-room-chart").getContext("2d");
-var optionsNoAnimation = { animation: false }
-var livingRoomChart = new Chart(livingRoomCtx, {
-  type: 'line',
-  data: livingRoomData,
-  options: livingRoomOption
-});
+  //Get the context of the canvas element for the living room chart
+  var livingRoomCtx = document.getElementById("living-room-chart").getContext("2d");
+  var optionsNoAnimation = { animation: false }
+  var livingRoomChart = new Chart(livingRoomCtx, {
+    type: 'line',
+    data: livingRoomData,
+    options: livingRoomOption
+  });
 
 
   // only keep no more than 50 points in the line chart
@@ -268,17 +268,23 @@ var livingRoomChart = new Chart(livingRoomCtx, {
       await connection.start();
       console.log('Successfully connected to SignalR Service');
       $('#temperatureData').prepend('<div class="signalR-message">SignalR Successfully Connected</div>');
+      $('#signalR-status-data').text('Connected');
+      $('.signalR-status-div').addClass('connected');
     } catch (err) {
       console.log('SignalR Error: ' + err);
       $('#temperatureData').prepend('<div class="signalR-message">SignalR Error: See developer console for more details');
-        setTimeout(() => start(), 5000);
+      $('#signalR-status-data').text('Not Connected');
+      $('.signalR-status-div').removeClass('connected');
+      setTimeout(() => start(), 5000);
     }
-};
+  };
 
-connection.onclose(async () => {
-  $('#temperatureData').prepend('<div class="signalR-message">SignalR Disconnected: Attempting to reconnect</div>');
+  connection.onclose(async () => {
+    $('#temperatureData').prepend('<div class="signalR-message">SignalR Disconnected: Attempting to reconnect</div>');
+    $('#signalR-status-data').text('Not Connected');
+    $('.signalR-status-div').removeClass('connected');
     await start();
-});
+  });
 
   start();
 
