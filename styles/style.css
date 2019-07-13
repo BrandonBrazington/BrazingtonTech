@@ -48,7 +48,8 @@ a {
     "bedTemp"
     "livHumidity"
     "livTemp"
-    "outTemp";
+    "outTemp"
+    "status";
 }
 
 @media (min-width: 1000px) {
