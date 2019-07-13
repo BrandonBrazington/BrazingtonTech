@@ -1,7 +1,10 @@
 $(document).ready(function () {
-  var indoorTimeData = [],
-    indoorTempData = [],
-    indoorHumidityData = [],
+  var bedroomTimeData = [],
+    bedroomTempData = [],
+    bedroomHumidityData = [],
+    livingRoomTimeData = [],
+    livingRoomTempData = [],
+    livingRoomHumidityData = [],
     outdoorTimeData = [],
     outdoorTempData = [];
   var outdoorData = {
@@ -21,30 +24,58 @@ $(document).ready(function () {
     ]
   }
 
-  var indoorData = {
-    labels: indoorTimeData,
+  var bedroomData = {
+    labels: bedroomTimeData,
     datasets: [
       {
         fill: false,
-        label: 'Indoor Temperature',
+        label: 'Bedroom Temperature',
         yAxisID: 'Temperature',
         borderColor: "rgba(255, 204, 0, 1)",
         pointBoarderColor: "rgba(255, 204, 0, 1)",
         backgroundColor: "rgba(255, 204, 0, 0.4)",
         pointHoverBackgroundColor: "rgba(255, 204, 0, 1)",
         pointHoverBorderColor: "rgba(255, 204, 0, 1)",
-        data: indoorTempData
+        data: bedroomTempData
       },
       {
         fill: false,
-        label: 'Indoor Humidity',
+        label: 'Bedroom Humidity',
         yAxisID: 'Humidity',
         borderColor: "rgba(24, 120, 240, 1)",
         pointBoarderColor: "rgba(24, 120, 240, 1)",
         backgroundColor: "rgba(24, 120, 240, 0.4)",
         pointHoverBackgroundColor: "rgba(24, 120, 240, 1)",
         pointHoverBorderColor: "rgba(24, 120, 240, 1)",
-        data: indoorHumidityData
+        data: bedroomHumidityData
+      }
+    ]
+  }
+
+  var livingRoomData = {
+    labels: livingRoomTimeData,
+    datasets: [
+      {
+        fill: false,
+        label: 'Living Room Temperature',
+        yAxisID: 'Temperature',
+        borderColor: "rgba(255, 204, 0, 1)",
+        pointBoarderColor: "rgba(255, 204, 0, 1)",
+        backgroundColor: "rgba(255, 204, 0, 0.4)",
+        pointHoverBackgroundColor: "rgba(255, 204, 0, 1)",
+        pointHoverBorderColor: "rgba(255, 204, 0, 1)",
+        data: livingRoomTempData
+      },
+      {
+        fill: false,
+        label: 'Living Room Humidity',
+        yAxisID: 'Humidity',
+        borderColor: "rgba(24, 120, 240, 1)",
+        pointBoarderColor: "rgba(24, 120, 240, 1)",
+        backgroundColor: "rgba(24, 120, 240, 0.4)",
+        pointHoverBackgroundColor: "rgba(24, 120, 240, 1)",
+        pointHoverBorderColor: "rgba(24, 120, 240, 1)",
+        data: livingRoomHumidityData
       }
     ]
   }
@@ -68,10 +99,37 @@ $(document).ready(function () {
     }
   }
 
-  var indoorOption = {
+  var bedroomOption = {
     title: {
       display: true,
-      text: 'Indoor Temperature & Humidity Real-time Data',
+      text: 'Bedroom Temperature & Humidity Real-time Data',
+      fontSize: 36
+    },
+    scales: {
+      yAxes: [{
+        id: 'Temperature',
+        type: 'linear',
+        scaleLabel: {
+          labelString: 'Temperature(F)',
+          display: true
+        },
+        position: 'left',
+      }, {
+        id: 'Humidity',
+        type: 'linear',
+        scaleLabel: {
+          labelString: 'Humidity(%)',
+          display: true
+        },
+        position: 'right'
+      }]
+    }
+  }
+
+  var livingRoomOption = {
+    title: {
+      display: true,
+      text: 'Living Room Temperature & Humidity Real-time Data',
       fontSize: 36
     },
     scales: {
@@ -96,7 +154,7 @@ $(document).ready(function () {
   }
 
   //Get the context of the canvas element for the outdoor chart
-  var outdoorCtx = document.getElementById("outdoorChart").getContext("2d");
+  var outdoorCtx = document.getElementById("outdoor-chart").getContext("2d");
   var optionsNoAnimation = { animation: false }
   var outdoorChart = new Chart(outdoorCtx, {
     type: 'line',
@@ -104,16 +162,23 @@ $(document).ready(function () {
     options: outdoorOption
   });
 
-  //Get the context of the canvas element for the indoor chart
-  var indoorCtx = document.getElementById("indoorChart").getContext("2d");
+  //Get the context of the canvas element for the bedroom chart
+  var bedroomCtx = document.getElementById("bedroom-chart").getContext("2d");
   var optionsNoAnimation = { animation: false }
-  var indoorChart = new Chart(indoorCtx, {
+  var bedroomChart = new Chart(bedroomCtx, {
     type: 'line',
-    data: indoorData,
-    options: indoorOption
+    data: bedroomData,
+    options: bedroomOption
   });
 
-
+//Get the context of the canvas element for the living room chart
+var livingRoomCtx = document.getElementById("living-room-chart").getContext("2d");
+var optionsNoAnimation = { animation: false }
+var livingRoomChart = new Chart(livingRoomCtx, {
+  type: 'line',
+  data: livingRoomData,
+  options: livingRoomOption
+});
 
 
   // only keep no more than 50 points in the line chart
@@ -133,28 +198,6 @@ $(document).ready(function () {
       console.log("Invalid message received (no deviceID)");
       return;
     }
-    // Process Bedroom Temperature Data
-    if (message.deviceID == "Bedroom") {
-      $('#indoor-temperature-data').html(message.temperature + "&deg;");
-      $('#indoor-humidity-data').html(message.humidity + "%");
-
-      indoorTimeData.push(Date.now());
-      indoorTempData.push(message.temperature);
-      indoorHumidityData.push(message.humidity);
-
-      // Only keep up to maxLen points in the line chart
-      if (indoorTimeData.length > maxLen) {
-        indoorTimeData.shift();
-        indoorTempData.shift();
-        indoorHumidityData.shift();
-      }
-
-      // Push raw data to DOM
-      $('#temperatureData').prepend('<div class="indoorTempHumidity temperature">' + "Indoors: " + message.temperature + '&deg; with a humidity of ' + message.humidity + '% @ ' + Date.now() + '</div>');
-
-      // Update indoor chart
-      indoorChart.update();
-    }
     // Process Balcony Temperature Data
     if (message.deviceID == "Balcony") {
       $('#outdoor-temperature-data').html(message.temperature + "&deg;");
@@ -169,10 +212,54 @@ $(document).ready(function () {
       }
 
       // Push raw data to DOM
-      $('#temperatureData').prepend('<div class="outdoorTemperature temperature">' + "Outdoors: " + message.temperature + '&deg; @ ' + Date.now() + '</div>');
+      $('#temperatureData').prepend('<div class="outdoorTemperature">' + "Outdoors: " + message.temperature + '&deg; @ ' + Date.now() + '</div>');
 
       // Update outdoor chart
       outdoorChart.update();
+    }
+    // Process Bedroom Temperature Data
+    if (message.deviceID == "Bedroom") {
+      $('#bedroom-temperature-data').html(message.temperature + "&deg;");
+      $('#bedroom-humidity-data').html(message.humidity + "%");
+
+      bedroomTimeData.push(Date.now());
+      bedroomTempData.push(message.temperature);
+      bedroomHumidityData.push(message.humidity);
+
+      // Only keep up to maxLen points in the line chart
+      if (bedroomTimeData.length > maxLen) {
+        bedroomTimeData.shift();
+        bedroomTempData.shift();
+        bedroomHumidityData.shift();
+      }
+
+      // Push raw data to DOM
+      $('#temperatureData').prepend('<div class="bedroom-temp-humidity">' + "Bedroom: " + message.temperature + '&deg; with a humidity of ' + message.humidity + '% @ ' + Date.now() + '</div>');
+
+      // Update bedroom chart
+      bedroomChart.update();
+    }
+    // Process Living Room Temperature Data
+    if (message.deviceID == "LivingRoom") {
+      $('#living-room-temperature-data').html(message.temperature + "&deg;");
+      $('#living-room-humidity-data').html(message.humidity + "%");
+
+      livingRoomTimeData.push(Date.now());
+      livingRoomTempData.push(message.temperature);
+      livingRoomHumidityData.push(message.humidity);
+
+      // Only keep up to maxLen points in the line chart
+      if (livingRoomTimeData.length > maxLen) {
+        livingRoomTimeData.shift();
+        livingRoomTempData.shift();
+        livingRoomHumidityData.shift();
+      }
+
+      // Push raw data to DOM
+      $('#temperatureData').prepend('<div class="living-room-temp-humidity">' + "Living Room: " + message.temperature + '&deg; with a humidity of ' + message.humidity + '% @ ' + Date.now() + '</div>');
+
+      // Update living room chart
+      livingRoomChart.update();
     }
   });
 
