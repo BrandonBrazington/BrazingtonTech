@@ -43,8 +43,8 @@ a {
   grid-template-rows: auto 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 15px;
   grid-template-areas:
-    "status"
     "header"
+    "status"
     "bedHumidity"
     "bedTemp"
     "livHumidity"
