@@ -43,13 +43,13 @@ a {
   grid-template-rows: auto 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 15px;
   grid-template-areas:
+    "status"
     "header"
     "bedHumidity"
     "bedTemp"
     "livHumidity"
     "livTemp"
-    "outTemp"
-    "status";
+    "outTemp";
 }
 
 @media (min-width: 1000px) {
