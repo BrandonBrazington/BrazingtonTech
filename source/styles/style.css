@@ -44,12 +44,12 @@ a {
   grid-gap: 15px;
   grid-template-areas:
     "header"
+    "status"
     "bedHumidity"
     "bedTemp"
     "livHumidity"
     "livTemp"
-    "outTemp"
-    "status";
+    "outTemp";
 }
 
 @media (min-width: 1000px) {
