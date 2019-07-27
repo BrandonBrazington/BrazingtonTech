@@ -16,7 +16,7 @@ a {
   color: beige;
   background-color: deepskyblue;
   border-radius: 25px;
-  /* padding: 15px; */
+  padding: 5px;
   /* margin: 25px; */
   /* min-width: 300px; */
   /* max-width: 1000px; */
@@ -39,36 +39,57 @@ a {
 .css-grid-container {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr 1fr 1fr;
   grid-gap: 15px;
   grid-template-areas:
-    "header"
-    "status"
-    "bedHumidity"
-    "bedTemp"
-    "livHumidity"
-    "livTemp"
-    "outTemp";
+    "header header"
+    "status outTemp"
+    "bedHumidity bedTemp"
+    "livHumidity livTemp";
 }
 
-@media (min-width: 1000px) {
+h1 {
+  font-size: 1em;
+}
+
+h1.title {
+  font-size: 2em;
+}
+.temperature-data, .humidity-data, #signalR-status-data {
+  font-size: 1em;
+}
+
+.container-fluid {
+  display: none;
+}
+
+@media (min-width: 1200px) {
   .css-grid-container {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas:
       "header header header header header header"
       "status bedHumidity bedTemp livHumidity livTemp outTemp";
+  } 
+  .container-fluid {
+    display: block;
+  }
+  h1 {
+    font-size: 1.25em;
+  }
+  .temperature-data, .humidity-data, #signalR-status-data {
+    font-size: 2em;
   }
 }
 
-.temperature-data, .humidity-data {
+/* .temperature-data, .humidity-data {
   font-size: 3em; 
 }
 
 #signalR-status-data {
   font-size: 2em;
-}
+} */
 
 .signalR-status-div {
   background-color: darkred;
