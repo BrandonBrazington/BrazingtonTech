@@ -212,7 +212,7 @@ $(document).ready(function () {
       }
 
       // Push raw data to DOM
-      $('#temperatureData').prepend('<div class="outdoorTemperature">' + "Outdoors: " + message.temperature + '&deg; @ ' + Date.now() + '</div>');
+      $('#temperatureData').prepend('<div class="outdoorTemperature">' + "Outdoors: " + message.temperature + '&deg; @ ' + new Date() + '</div>');
 
       // Update outdoor chart
       outdoorChart.update();
@@ -234,7 +234,7 @@ $(document).ready(function () {
       }
 
       // Push raw data to DOM
-      $('#temperatureData').prepend('<div class="bedroom-temp-humidity">' + "Bedroom: " + message.temperature + '&deg; with a humidity of ' + message.humidity + '% @ ' + Date.now() + '</div>');
+      $('#temperatureData').prepend('<div class="bedroom-temp-humidity">' + "Bedroom: " + message.temperature + '&deg; with a humidity of ' + message.humidity + '% @ ' + new Date() + '</div>');
 
       // Update bedroom chart
       bedroomChart.update();
@@ -244,7 +244,7 @@ $(document).ready(function () {
       $('#living-room-temperature-data').html(message.temperature + "&deg;");
       $('#living-room-humidity-data').html(message.humidity + "%");
 
-      livingRoomTimeData.push(Date.now());
+      livingRoomTimeData.push(message.time);
       livingRoomTempData.push(message.temperature);
       livingRoomHumidityData.push(message.humidity);
 
@@ -256,7 +256,7 @@ $(document).ready(function () {
       }
 
       // Push raw data to DOM
-      $('#temperatureData').prepend('<div class="living-room-temp-humidity">' + "Living Room: " + message.temperature + '&deg; with a humidity of ' + message.humidity + '% @ ' + Date.now() + '</div>');
+      $('#temperatureData').prepend('<div class="living-room-temp-humidity">' + "Living Room: " + message.temperature + '&deg; with a humidity of ' + message.humidity + '% @ ' + new Date(message.time * 1000) + '</div>');
 
       // Update living room chart
       livingRoomChart.update();
