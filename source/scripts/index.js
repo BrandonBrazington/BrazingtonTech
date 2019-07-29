@@ -1,4 +1,8 @@
 $(document).ready(function () {
+  // Redirect to HTTPS if not already
+  // TODO: Replace console.log("Test") with code to actually redirect (possibly need to test if host is local for debugging)
+  if (document.location.protocol != "https:") { console.log("Test")}
+  
   var bedroomTimeData = [],
     bedroomTempData = [],
     bedroomHumidityData = [],
