@@ -30,7 +30,7 @@ a {
   color: darkred;
   background-color: limegreen;
   border-radius: 30px;
-  /* padding: 5px; */
+  padding: 5px;
   /* max-width: 1100px; */
   text-align: center;
   grid-area: header;
@@ -56,8 +56,12 @@ h1 {
 h1.title {
   font-size: 2em;
 }
-.temperature-data, .humidity-data, #signalR-status-data {
+#signalR-status-data {
   font-size: 1em;
+}
+
+.temperature-data, .humidity-data {
+  font-size: 2em;
 }
 
 .container-fluid {
@@ -78,7 +82,7 @@ h1.title {
   h1 {
     font-size: 1.25em;
   }
-  .temperature-data, .humidity-data, #signalR-status-data {
+  #signalR-status-data {
     font-size: 2em;
   }
 }
