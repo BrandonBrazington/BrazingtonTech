@@ -7,11 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Temperature Live Data</title>
   <script src="scripts/jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="scripts/Chart.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="scripts/signalr.js"></script>
   <script src="scripts/index.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="styles/style.css" rel="stylesheet" />
 </head>
 
@@ -43,26 +40,11 @@
       <p id="outdoor-temperature-data" class="temperature-data">N/A</p>
     </div>
   </div>
-  <div class="container-fluid">
-    <div class="col-md-4 col-xs-12">
-      <canvas id="bedroom-chart" width="400" height="150"></canvas>
-    </div>
-    <div class="col-md-4 col-xs-12">
-      <canvas id="living-room-chart" width="400" height="150"></canvas>
-    </div>
-    <div class="col-md-4 col-xs-12">
-      <canvas id="outdoor-chart" width="400" height="150"></canvas>
-    </div>
-  </div>
-  <div class="col-md-12 col-xs-12" id="mainTempDiv">
+  <div id="mainTempDiv">
     <h3>Temperature RAW Data</h3>
     <p>Allow up to one minute for updated data to appear here</p>
     <div id="temperatureData"></div>
-    </>
   </div>
-  </div>
-  </div>
-
 </body>
 
 </html>

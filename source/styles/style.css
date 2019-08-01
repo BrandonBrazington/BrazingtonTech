@@ -126,3 +126,7 @@ h1.title {
 #living-room-temperature-card {
   grid-area: livTemp;
 }
+
+p {
+  margin: 0 0 10px;
+}
