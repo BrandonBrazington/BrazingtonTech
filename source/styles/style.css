@@ -54,7 +54,7 @@ h1 {
 }
 
 h1.title {
-  font-size: 2em;
+  font-size: 1.75em;
 }
 #signalR-status-data {
   font-size: 1em;
@@ -62,10 +62,6 @@ h1.title {
 
 .temperature-data, .humidity-data {
   font-size: 2em;
-}
-
-.container-fluid {
-  display: none;
 }
 
 @media (min-width: 1200px) {
@@ -76,11 +72,11 @@ h1.title {
       "header header header header header header"
       "status bedHumidity bedTemp livHumidity livTemp outTemp";
   } 
-  .container-fluid {
-    display: block;
-  }
   h1 {
     font-size: 1.25em;
+  }
+  h1.title {
+    font-size: 3em;
   }
   #signalR-status-data {
     font-size: 2em;
