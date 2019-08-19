@@ -22,7 +22,7 @@ $(document).ready(function () {
     // Process Balcony Temperature Data
     if (message.deviceID == "Balcony") {
       let currentDateTime = new Date();
-      let currentDateTimeString = currentDateTime.getMonth().toString() + "/" + currentDateTime.getDate().toString() + " " + currentDateTime.getHours().toString() + ":" + currentDateTime.getMinutes().toString() + ":" + currentDateTime.getSeconds().toString();
+      let currentDateTimeString = currentDateTime.getMonth().toString() + "/" + currentDateTime.getDate().toString() + " " + currentDateTime.getHours().toString() + ":" + currentDateTime.getMinutes().toString().padStart(2,'0') + ":" + currentDateTime.getSeconds().toString().padStart(2,'0');
       $('#outdoor-temperature-data').html(message.temperature + "&deg;");
       $('#outdoor-temperature-time').text(currentDateTimeString);
       // Push raw data to DOM
@@ -32,7 +32,7 @@ $(document).ready(function () {
     // Process Bedroom Temperature Data
     if (message.deviceID == "Bedroom") {
       let currentDateTime = new Date();
-      let currentDateTimeString = currentDateTime.getMonth().toString() + "/" + currentDateTime.getDate().toString() + " " + currentDateTime.getHours().toString() + ":" + currentDateTime.getMinutes().toString() + ":" + currentDateTime.getSeconds().toString();
+      let currentDateTimeString = currentDateTime.getMonth().toString() + "/" + currentDateTime.getDate().toString() + " " + currentDateTime.getHours().toString() + ":" + currentDateTime.getMinutes().toString().padStart(2,'0') + ":" + currentDateTime.getSeconds().toString().padStart(2,'0');
       $('#bedroom-temperature-data').html(message.temperature + "&deg;");
       $('#bedroom-humidity-data').html(message.humidity + "%");
       $('#bedroom-temperature-time').text(currentDateTimeString);
@@ -45,7 +45,7 @@ $(document).ready(function () {
     // Process Living Room Temperature Data
     if (message.deviceID == "LivingRoom") {
       let messageDateTime = new Date(message.time * 1000);
-      let messageDateTimeString = messageDateTime.getMonth().toString() + "/" + messageDateTime.getDate().toString() + " " + messageDateTime.getHours().toString() + ":" + messageDateTime.getMinutes().toString() + ":" + messageDateTime.getSeconds().toString();
+      let messageDateTimeString = messageDateTime.getMonth().toString() + "/" + messageDateTime.getDate().toString() + " " + messageDateTime.getHours().toString() + ":" + messageDateTime.getMinutes().toString().padStart(2,'0') + ":" + messageDateTime.getSeconds().toString().padStart(2,'0');
       $('#living-room-temperature-data').html(message.temperature + "&deg;");
       $('#living-room-humidity-data').html(message.humidity + "%");
       $('#living-room-temperature-time').text(messageDateTimeString);
