@@ -58,11 +58,12 @@ h1 {
 
 @media (min-width: 1200px) {
   .css-grid-container {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr;
     grid-template-areas:
-      "header header header header header header"
-      "status bedHumidity bedTemp livHumidity livTemp outTemp";
+    "header header header"
+    "status bedHumidity livHumidity"
+    "outTemp bedTemp livTemp ";
   } 
   h1 {
     font-size: 1.25em;
