@@ -52,12 +52,10 @@ $(document).ready(function () {
     try {
       await connection.start();
       console.log('Successfully connected to SignalR Service');
-      $('#temperatureData').prepend('<div class="signalR-message">SignalR Successfully Connected</div>');
       $('#signalR-status-data').text('Connected');
       $('.signalR-status-div').addClass('connected');
     } catch (err) {
       console.log('SignalR Error: ' + err);
-      $('#temperatureData').prepend('<div class="signalR-message">SignalR Error: See developer console for more details');
       $('#signalR-status-data').text('Not Connected');
       $('.signalR-status-div').removeClass('connected');
       setTimeout(() => start(), 5000);
@@ -65,7 +63,6 @@ $(document).ready(function () {
   };
 
   connection.onclose(async () => {
-    $('#temperatureData').prepend('<div class="signalR-message">SignalR Disconnected: Attempting to reconnect</div>');
     $('#signalR-status-data').text('Not Connected');
     $('.signalR-status-div').removeClass('connected');
     await start();
