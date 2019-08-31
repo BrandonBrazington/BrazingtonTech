@@ -48,6 +48,13 @@ $(document).ready(function () {
     }
   });
 
+  connection.on("updated", (secondsToWait) => {
+    console.log(`Website has been updated, reloading page in ${secondsToWait} seconds`);
+    setTimeout(() => {
+      location.reload(true);
+    }, (secondsToWait * 1000));
+  });
+
   async function start() {
     try {
       await connection.start();
