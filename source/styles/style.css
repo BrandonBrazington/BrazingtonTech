@@ -2,6 +2,7 @@
   /*outline: 1px solid red !important;*/
   font-family: Calibri;
 }
+
 body {
   padding: 10px;
   margin: 0;
@@ -37,11 +38,7 @@ a {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto 1fr 1fr 1fr;
   grid-gap: 15px;
-  grid-template-areas:
-    "header header"
-    "status outTemp"
-    "bedHumidity bedTemp"
-    "livHumidity livTemp";
+  grid-template-areas: "header header" "status outTemp" "bedHumidity bedTemp" "livHumidity livTemp";
 }
 
 h1 {
@@ -60,18 +57,14 @@ h1 {
   .css-grid-container {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto 1fr 1fr;
-    grid-template-areas:
-    "header header header"
-    "status bedHumidity livHumidity"
-    "outTemp bedTemp livTemp ";
-  } 
+    grid-template-areas: "header header header" "status bedHumidity livHumidity" "outTemp bedTemp livTemp ";
+  }
   h1 {
     font-size: 1.25em;
   }
   .title {
     font-size: 2.5em;
   }
-
   #signalR-status-data {
     font-size: 2em;
   }
@@ -111,4 +104,16 @@ h1 {
 
 p {
   margin: 0 0 10px;
+}
+
+#updated-banner {
+  background-color: darkred;
+  color: limegreen;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding: 25px 5px;
+  text-align: center;
+  font-size: 1.75em;
 }

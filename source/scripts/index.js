@@ -53,6 +53,15 @@ $(document).ready(function () {
     setTimeout(() => {
       location.reload(true);
     }, (secondsToWait * 1000));
+    $("#updated-banner").removeAttr("hidden");
+    let pageRefreshTimer = $("#page-refresh-timer");
+    setInterval(() => {
+      secondsToWait -= 1;
+      let minutes = parseInt(secondsToWait / 60, 10) % 60
+      let seconds = (secondsToWait % 60).toString().padStart(2, "0")
+      console.log(minutes, seconds)
+      pageRefreshTimer.text(minutes + ":" + seconds)
+    }, 1000);
   });
 
   async function start() {
@@ -76,4 +85,17 @@ $(document).ready(function () {
   });
 
   start();
+
+  // setTimeout(() => {
+  //   let secondsToWait = 300;
+  //   $("#updated-banner").removeAttr("hidden");
+  //   let pageRefreshTimer = $("#page-refresh-timer");
+  //   setInterval(() => {
+  //     secondsToWait -= 1;
+  //     let minutes = parseInt(secondsToWait / 60, 10) % 60
+  //     let seconds =  (secondsToWait % 60).toString().padStart(2, "0")
+  //     console.log(minutes, seconds)
+  //     pageRefreshTimer.text(minutes + ":" + seconds)
+  //   }, 1000);
+  // }, 5000);
 });
