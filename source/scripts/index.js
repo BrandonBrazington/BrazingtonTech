@@ -50,16 +50,15 @@ $(document).ready(function () {
 
   connection.on("updated", (secondsToWait) => {
     console.log(`Website has been updated, reloading page in ${secondsToWait} seconds`);
-    setTimeout(() => {
-      location.reload(true);
-    }, (secondsToWait * 1000));
     $("#updated-banner").removeAttr("hidden");
     let pageRefreshTimer = $("#page-refresh-timer");
     setInterval(() => {
       secondsToWait -= 1;
+      if (secondsToWait <= 0) {
+        location.reload(true);
+      }
       let minutes = parseInt(secondsToWait / 60, 10) % 60
       let seconds = (secondsToWait % 60).toString().padStart(2, "0")
-      console.log(minutes, seconds)
       pageRefreshTimer.text(minutes + ":" + seconds)
     }, 1000);
   });
