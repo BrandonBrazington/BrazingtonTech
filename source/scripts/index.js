@@ -90,8 +90,8 @@ $(document).ready(function () {
     $("#date-card").html((currentDateTime.getMonth() + 1).toString() + "/" + currentDateTime.getDate().toString() + "/" + currentDateTime.getFullYear().toString());
     let currentHour = currentDateTime.getHours();
     let amOrPm = "AM";
-    if (currentHour > 12) {
-      currentHour -= 12;
+    if (currentHour >= 12) {
+      if (currentHour != 12) currentHour -= 12;
       amOrPm = "PM";
     } else if (currentHour == 0) {
       currentHour = 12;
