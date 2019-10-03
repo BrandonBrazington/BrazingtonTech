@@ -93,6 +93,8 @@ $(document).ready(function () {
     if (currentHour > 12) {
       currentHour -= 12;
       amOrPm = "PM";
+    } else if (currentHour == 0) {
+      currentHour = 12;
     }
     $("#time-card").html(currentHour.toString() + ":" + currentDateTime.getMinutes().toString().padStart(2, '0') + ":" + currentDateTime.getSeconds().toString().padStart(2, '0') + " " + amOrPm)
   }, 1000);
