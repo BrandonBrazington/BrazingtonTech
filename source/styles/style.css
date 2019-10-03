@@ -12,7 +12,7 @@ a {
   color: #00b7ff;
 }
 
-.temperature-card, .humidity-card, .signalR-status-div {
+.card {
   color: beige;
   background-color: deepskyblue;
   border-radius: 25px;
@@ -61,12 +61,19 @@ h1 {
   }
   h1 {
     font-size: 1.25em;
+    margin: 10px;
   }
   .title {
     font-size: 2.5em;
   }
   #signalR-status-data {
     font-size: 2em;
+  }
+  .temperature-data, .humidity-data {
+    font-size: 6em;
+  }
+  #date-card, #time-card {
+    font-size: 4.5em;
   }
 }
 
@@ -103,7 +110,15 @@ h1 {
 }
 
 p {
-  margin: 0 0 10px;
+  margin: 0;
+}
+
+.footer {
+  margin-top: 15px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
 }
 
 #updated-banner {

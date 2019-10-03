@@ -22,7 +22,7 @@ $(document).ready(function () {
     // Process Balcony Temperature Data
     if (message.deviceID == "Balcony") {
       let currentDateTime = new Date();
-      let currentDateTimeString = currentDateTime.getMonth().toString() + "/" + currentDateTime.getDate().toString() + " " + currentDateTime.getHours().toString() + ":" + currentDateTime.getMinutes().toString().padStart(2, '0') + ":" + currentDateTime.getSeconds().toString().padStart(2, '0');
+      let currentDateTimeString = (currentDateTime.getMonth() + 1).toString() + "/" + currentDateTime.getDate().toString() + " " + currentDateTime.getHours().toString() + ":" + currentDateTime.getMinutes().toString().padStart(2, '0') + ":" + currentDateTime.getSeconds().toString().padStart(2, '0');
       $('#outdoor-temperature-data').html(message.temperature + "&deg;");
       $('#outdoor-temperature-time').text(currentDateTimeString);
     }
@@ -30,7 +30,7 @@ $(document).ready(function () {
     // Process Bedroom Temperature Data
     if (message.deviceID == "Bedroom") {
       let currentDateTime = new Date();
-      let currentDateTimeString = currentDateTime.getMonth().toString() + "/" + currentDateTime.getDate().toString() + " " + currentDateTime.getHours().toString() + ":" + currentDateTime.getMinutes().toString().padStart(2, '0') + ":" + currentDateTime.getSeconds().toString().padStart(2, '0');
+      let currentDateTimeString = (currentDateTime.getMonth() + 1).toString() + "/" + currentDateTime.getDate().toString() + " " + currentDateTime.getHours().toString() + ":" + currentDateTime.getMinutes().toString().padStart(2, '0') + ":" + currentDateTime.getSeconds().toString().padStart(2, '0');
       $('#bedroom-temperature-data').html(message.temperature + "&deg;");
       $('#bedroom-humidity-data').html(message.humidity + "%");
       $('#bedroom-temperature-time').text(currentDateTimeString);
@@ -40,7 +40,7 @@ $(document).ready(function () {
     // Process Living Room Temperature Data
     if (message.deviceID == "LivingRoom") {
       let messageDateTime = new Date(message.time * 1000);
-      let messageDateTimeString = messageDateTime.getMonth().toString() + "/" + messageDateTime.getDate().toString() + " " + messageDateTime.getHours().toString() + ":" + messageDateTime.getMinutes().toString().padStart(2, '0') + ":" + messageDateTime.getSeconds().toString().padStart(2, '0');
+      let messageDateTimeString = (messageDateTime.getMonth() + 1).toString() + "/" + messageDateTime.getDate().toString() + " " + messageDateTime.getHours().toString() + ":" + messageDateTime.getMinutes().toString().padStart(2, '0') + ":" + messageDateTime.getSeconds().toString().padStart(2, '0');
       $('#living-room-temperature-data').html(message.temperature + "&deg;");
       $('#living-room-humidity-data').html(message.humidity + "%");
       $('#living-room-temperature-time').text(messageDateTimeString);
@@ -85,16 +85,31 @@ $(document).ready(function () {
 
   start();
 
-  // setTimeout(() => {
-  //   let secondsToWait = 300;
-  //   $("#updated-banner").removeAttr("hidden");
-  //   let pageRefreshTimer = $("#page-refresh-timer");
-  //   setInterval(() => {
-  //     secondsToWait -= 1;
-  //     let minutes = parseInt(secondsToWait / 60, 10) % 60
-  //     let seconds =  (secondsToWait % 60).toString().padStart(2, "0")
-  //     console.log(minutes, seconds)
-  //     pageRefreshTimer.text(minutes + ":" + seconds)
-  //   }, 1000);
-  // }, 5000);
+  setInterval(() => {
+    let currentDateTime = new Date();
+    $("#date-card").html((currentDateTime.getMonth() + 1).toString() + "/" + currentDateTime.getDate().toString() + "/" + currentDateTime.getFullYear().toString());
+    let currentHour = currentDateTime.getHours();
+    let amOrPm = "AM";
+    if (currentHour > 12) {
+      currentHour -= 12;
+      amOrPm = "PM";
+    }
+    $("#time-card").html(currentHour.toString() + ":" + currentDateTime.getMinutes().toString().padStart(2, '0') + ":" + currentDateTime.getSeconds().toString().padStart(2, '0') + " " + amOrPm)
+  }, 1000);
+
+  // Update UI with data for testing (comment out before uploading)
+  // let currentDateTime = new Date();
+  // let currentDateTimeString = (currentDateTime.getMonth()+1).toString() + "/" + currentDateTime.getDate().toString() + " " + currentDateTime.getHours().toString() + ":" + currentDateTime.getMinutes().toString().padStart(2, '0') + ":" + currentDateTime.getSeconds().toString().padStart(2, '0');
+  // let testTemperatureString = "100.0" + "&deg;"
+  // let testHumidityString = "50.0" + "%"
+  // $('#outdoor-temperature-data').html(testTemperatureString);
+  // $('#outdoor-temperature-time').text(currentDateTimeString);
+  // $('#bedroom-temperature-data').html(testTemperatureString);
+  // $('#bedroom-humidity-data').html(testHumidityString);
+  // $('#bedroom-temperature-time').text(currentDateTimeString);
+  // $('#bedroom-humidity-time').text(currentDateTimeString);
+  // $('#living-room-temperature-data').html(testTemperatureString);
+  // $('#living-room-humidity-data').html(testHumidityString);
+  // $('#living-room-temperature-time').text(currentDateTimeString);
+  // $('#living-room-humidity-time').text(currentDateTimeString);
 });
