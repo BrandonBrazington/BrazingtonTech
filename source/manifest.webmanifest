@@ -1,0 +1,26 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "Temperature Live Data",
+    "scope": "/",
+    "display": "fullscreen",
+    "start_url": "/",
+    "short_name": "Temp Live Data",
+    "theme_color": "limegreen",
+    "description": "Displays live temperature and humidity data from Brandon Brazington's home",
+    "orientation": "any",
+    "background_color": "limegreen",
+    "icons": [
+        {
+            "src": "/icon.svg"
+        },
+        {
+            "src": "/icon.png",
+            "sizes": "512x512 1024x1024"
+        },
+        {
+            "src": "/favicon.ico",
+            "sizes": "256x256 128x128 96x96 72x72 64x64 48x48 32x32 24x24 16x16"
+        }
+    ]
+}
