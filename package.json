@@ -1,0 +1,23 @@
+{
+  "name": "brazingtontech",
+  "version": "1.0.0",
+  "description": "[![Build Status](https://dev.azure.com/discoverybyte/Brazington%20Tech%20Website/_apis/build/status/BrandonBrazington.BrazingtonTech?branchName=master)](https://dev.azure.com/discoverybyte/Brazington%20Tech%20Website/_build/latest?definitionId=7&branchName=master)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrandonBrazington/BrazingtonTech.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrandonBrazington/BrazingtonTech/issues"
+  },
+  "homepage": "https://www.brazington.tech",
+  "dependencies": {
+    "@microsoft/signalr": "^3.0.0"
+  }
+}
