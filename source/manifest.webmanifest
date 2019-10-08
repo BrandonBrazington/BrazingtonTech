@@ -3,7 +3,7 @@
     "lang": "en",
     "name": "Temperature Live Data",
     "scope": "/",
-    "display": "fullscreen",
+    "display": "standalone",
     "start_url": "/",
     "short_name": "Temp Live Data",
     "theme_color": "limegreen",
