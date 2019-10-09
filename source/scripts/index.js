@@ -136,18 +136,30 @@ function calculateSecondsBetweenMilliseconds(start, end) {
 function updateLastRefreshedCounters() {
   let currentDateTime = new Date();
   let currentMilliseconds = currentDateTime.getTime();
+  let secondsWithoutUpdateBeforeMarkDisconnected = 5 * 60;
   if (lastMessageTimes.Bedroom != -1) {
     let bedroomSecondsSinceLastUpdate = calculateSecondsBetweenMilliseconds(lastMessageTimes.Bedroom, currentMilliseconds);
+    if (bedroomSecondsSinceLastUpdate > secondsWithoutUpdateBeforeMarkDisconnected) {
+      $('#bedroom-humidity-card').addClass("disconnected");
+      $('#bedroom-temperature-card').addClass("disconnected");
+    }
     $("#bedroom-humidity-time").text(bedroomSecondsSinceLastUpdate + " seconds ago")
     $("#bedroom-temperature-time").text(bedroomSecondsSinceLastUpdate + " seconds ago")
   }
   if (lastMessageTimes.LivingRoom != -1) {
     let livingRoomSecondsSinceLastUpdate = calculateSecondsBetweenMilliseconds(lastMessageTimes.LivingRoom, currentMilliseconds);
+    if (livingRoomSecondsSinceLastUpdate > secondsWithoutUpdateBeforeMarkDisconnected) {
+      $('#living-room-humidity-card').addClass("disconnected");
+      $('#living-room-temperature-card').addClass("disconnected");
+    }
     $("#living-room-humidity-time").text(livingRoomSecondsSinceLastUpdate + " seconds ago")
     $("#living-room-temperature-time").text(livingRoomSecondsSinceLastUpdate + " seconds ago")
   }
   if (lastMessageTimes.Balcony != -1) {
     let balconySecondsSinceLastUpdate = calculateSecondsBetweenMilliseconds(lastMessageTimes.Balcony, currentMilliseconds);
+    if (balconySecondsSinceLastUpdate > secondsWithoutUpdateBeforeMarkDisconnected) {
+      $('#outdoor-temperature-card').addClass("disconnected");
+    }
     $("#outdoor-temperature-time").text(balconySecondsSinceLastUpdate + " seconds ago")
   }
   if (millisecondsRefreshTimeAfterWebsiteUpdate != -1) {
