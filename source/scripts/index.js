@@ -142,30 +142,43 @@ function updateLastRefreshedCounters() {
     if (bedroomSecondsSinceLastUpdate > secondsWithoutUpdateBeforeMarkDisconnected) {
       $('#bedroom-humidity-card').addClass("disconnected");
       $('#bedroom-temperature-card').addClass("disconnected");
+      let messageDateTime = new Date(lastMessageTimes.Bedroom);
+      let messageDateTimeString = (messageDateTime.getMonth() + 1).toString() + "/" + messageDateTime.getDate().toString() + " " + messageDateTime.getHours().toString() + ":" + messageDateTime.getMinutes().toString().padStart(2, '0') + ":" + messageDateTime.getSeconds().toString().padStart(2, '0');
+      $("#bedroom-humidity-time").text(messageDateTimeString)
+      $("#bedroom-temperature-time").text(messageDateTimeString)
+    } else {
+      $("#bedroom-humidity-time").text(bedroomSecondsSinceLastUpdate + " seconds ago")
+      $("#bedroom-temperature-time").text(bedroomSecondsSinceLastUpdate + " seconds ago")
     }
-    $("#bedroom-humidity-time").text(bedroomSecondsSinceLastUpdate + " seconds ago")
-    $("#bedroom-temperature-time").text(bedroomSecondsSinceLastUpdate + " seconds ago")
   }
   if (lastMessageTimes.LivingRoom != -1) {
     let livingRoomSecondsSinceLastUpdate = calculateSecondsBetweenMilliseconds(lastMessageTimes.LivingRoom, currentMilliseconds);
     if (livingRoomSecondsSinceLastUpdate > secondsWithoutUpdateBeforeMarkDisconnected) {
       $('#living-room-humidity-card').addClass("disconnected");
       $('#living-room-temperature-card').addClass("disconnected");
+      let messageDateTime = new Date(lastMessageTimes.LivingRoom);
+      let messageDateTimeString = (messageDateTime.getMonth() + 1).toString() + "/" + messageDateTime.getDate().toString() + " " + messageDateTime.getHours().toString() + ":" + messageDateTime.getMinutes().toString().padStart(2, '0') + ":" + messageDateTime.getSeconds().toString().padStart(2, '0');
+      $("#living-room-humidity-time").text(messageDateTimeString)
+      $("#living-room-temperature-time").text(messageDateTimeString)
+    } else {
+      $("#living-room-humidity-time").text(livingRoomSecondsSinceLastUpdate + " seconds ago")
+      $("#living-room-temperature-time").text(livingRoomSecondsSinceLastUpdate + " seconds ago")
     }
-    $("#living-room-humidity-time").text(livingRoomSecondsSinceLastUpdate + " seconds ago")
-    $("#living-room-temperature-time").text(livingRoomSecondsSinceLastUpdate + " seconds ago")
   }
   if (lastMessageTimes.Balcony != -1) {
     let balconySecondsSinceLastUpdate = calculateSecondsBetweenMilliseconds(lastMessageTimes.Balcony, currentMilliseconds);
     if (balconySecondsSinceLastUpdate > secondsWithoutUpdateBeforeMarkDisconnected) {
       $('#outdoor-temperature-card').addClass("disconnected");
+      let messageDateTime = new Date(lastMessageTimes.Balcony);
+      let messageDateTimeString = (messageDateTime.getMonth() + 1).toString() + "/" + messageDateTime.getDate().toString() + " " + messageDateTime.getHours().toString() + ":" + messageDateTime.getMinutes().toString().padStart(2, '0') + ":" + messageDateTime.getSeconds().toString().padStart(2, '0');
+      $("#outdoor-temperature-time").text(messageDateTimeString)
+    } else {
+      $("#outdoor-temperature-time").text(balconySecondsSinceLastUpdate + " seconds ago")
     }
-    $("#outdoor-temperature-time").text(balconySecondsSinceLastUpdate + " seconds ago")
   }
   if (millisecondsRefreshTimeAfterWebsiteUpdate != -1) {
     secondsLeftBeforeRefresh = calculateSecondsBetweenMilliseconds(currentMilliseconds, millisecondsRefreshTimeAfterWebsiteUpdate);
     if (secondsLeftBeforeRefresh <= 0) {
-      caches.delete("pwabuilder-offline");
       location.reload(true);
     }
     let minutes = parseInt(secondsLeftBeforeRefresh / 60, 10) % 60
