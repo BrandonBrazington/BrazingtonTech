@@ -20,6 +20,15 @@
 </head>
 
 <body>
+  <div id="ie-overlay" hidden>
+    <h1>Unsupported Browser</h1>
+    <p>This website is not supported in Internet Explorer. Please us a modern browser (such as
+      <a href="https://www.mozilla.org/en-US/firefox/new/">Firefox</a>,
+      <a href="https://www.google.com/chrome/">Chrome</a>,
+      <a href="https://www.opera.com/">Opera</a>, or
+      <a href="https://www.microsoft.com/en-us/windows/microsoft-edge">Microsoft Edge</a>).
+    </p>
+  </div>
   <div id="updated-banner" hidden>The website has been updated! This page will be automatically refreshing in <span
       id="page-refresh-timer">5:00</span></div>
   <div class="css-grid-container">
@@ -58,6 +67,13 @@
     <div id="date-card" class="card">00/00/00</div>
     <div id="time-card" class="card">00:00:00 AM</div>
   </div>
+  <script>
+    // Display message if running in Interent Explorer as it is unsupported
+    var ua = window.navigator.userAgent;
+    var isIE = /MSIE|Trident/.test(ua);
+    if (isIE) {
+      $("#ie-overlay").removeAttr("hidden");
+    }</script>
 </body>
 
 </html>
