@@ -98,7 +98,6 @@ function handleNewMessage(message) {
   if (message.deviceID == "Balcony") {
     let currentDateTime = new Date();
     lastMessageTimes.Balcony = currentDateTime.getTime();
-    let currentDateTimeString = (currentDateTime.getMonth() + 1).toString() + "/" + currentDateTime.getDate().toString() + " " + currentDateTime.getHours().toString() + ":" + currentDateTime.getMinutes().toString().padStart(2, '0') + ":" + currentDateTime.getSeconds().toString().padStart(2, '0');
     $('#outdoor-temperature-card').removeClass("disconnected");
     $('#outdoor-temperature-data').html(message.temperature + "&deg;");
     updateLastRefreshedCounters();
@@ -106,9 +105,8 @@ function handleNewMessage(message) {
 
   // Process Bedroom Temperature Data
   if (message.deviceID == "Bedroom") {
-    let currentDateTime = new Date();
-    lastMessageTimes.Bedroom = currentDateTime.getTime();
-    let currentDateTimeString = (currentDateTime.getMonth() + 1).toString() + "/" + currentDateTime.getDate().toString() + " " + currentDateTime.getHours().toString() + ":" + currentDateTime.getMinutes().toString().padStart(2, '0') + ":" + currentDateTime.getSeconds().toString().padStart(2, '0');
+    let messageDateTime = new Date(message.time * 1000);
+    lastMessageTimes.Bedroom = message.time * 1000;
     $('#bedroom-humidity-card').removeClass("disconnected");
     $('#bedroom-temperature-card').removeClass("disconnected");
     $('#bedroom-temperature-data').html(message.temperature + "&deg;");
@@ -120,7 +118,6 @@ function handleNewMessage(message) {
   if (message.deviceID == "LivingRoom") {
     let messageDateTime = new Date(message.time * 1000);
     lastMessageTimes.LivingRoom = message.time * 1000;
-    let messageDateTimeString = (messageDateTime.getMonth() + 1).toString() + "/" + messageDateTime.getDate().toString() + " " + messageDateTime.getHours().toString() + ":" + messageDateTime.getMinutes().toString().padStart(2, '0') + ":" + messageDateTime.getSeconds().toString().padStart(2, '0');
     $('#living-room-humidity-card').removeClass("disconnected");
     $('#living-room-temperature-card').removeClass("disconnected");
     $('#living-room-temperature-data').html(message.temperature + "&deg;");
