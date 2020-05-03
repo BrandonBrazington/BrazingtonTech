@@ -18,7 +18,6 @@
   },
   "homepage": "https://www.brazington.tech",
   "dependencies": {
-    "@microsoft/signalr": "^3.0.0",
-    "jquery": "^3.4.1"
+    "@microsoft/signalr": "^3.0.0"
   }
 }
