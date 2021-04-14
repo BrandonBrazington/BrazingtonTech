@@ -36,9 +36,9 @@ a {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1fr 1fr;
+  grid-template-rows: auto 1fr;
   grid-gap: 15px;
-  grid-template-areas: "header header" "status outTemp" "livHumidity livTemp";
+  grid-template-areas: "header header" "status outTemp";
   /* grid-template-areas: "header header" "status outTemp" "bedHumidity bedTemp" "livHumidity livTemp"; */
 }
 
@@ -57,8 +57,8 @@ h1 {
 @media (min-width: 1200px) {
   .css-grid-container {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr 1fr;
-    grid-template-areas: "header header" "status livHumidity" "outTemp livTemp ";
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "header header" "status outTemp";
     /* grid-template-areas: "header header header" "status bedHumidity livHumidity" "outTemp bedTemp livTemp "; */
   }
   h1 {
