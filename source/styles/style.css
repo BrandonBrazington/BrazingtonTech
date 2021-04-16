@@ -36,9 +36,9 @@ a {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto 1fr 1fr;
   grid-gap: 15px;
-  grid-template-areas: "header header" "status outTemp";
+  grid-template-areas: "header header" "status status" "outTemp outTemp";
   /* grid-template-areas: "header header" "status outTemp" "bedHumidity bedTemp" "livHumidity livTemp"; */
 }
 
